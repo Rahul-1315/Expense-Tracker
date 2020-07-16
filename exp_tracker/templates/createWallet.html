@@ -1,0 +1,44 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/createWallet.css'%}">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Wallet Creation
+        </h1>
+        <img src="{% static 'images/wallet.png'%}" alt="icon" width="100px" height="100px">
+    </div>
+    <div class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>Enter The Credentials</h3>
+            <div class="form-ele">
+                <label>User-Id</label><br>
+                <input class="form-control" name='user_id' placeholder="Enter User-ID" required>
+            </div>
+            <div class="form-ele">
+                <label class="wallet">Wallet ID:{{random_no}}
+                </label>
+                <p style="font-size: 12px; color:springgreen;">* This will be your Wallet-ID for all future purposes</p>
+                <label>Enter The Number On The Screen</label>
+                <!-- <label>Wallet-ID</label> -->
+                <input class="form-control" required name='wallet_id' placeholder="Enter Wallet-ID">
+            </div>
+            <div class="form-ele">
+                <label>Enter Amount To Be Added To Your Wallet</label><br>
+                <input class="form-control" required name='balance' placeholder="Enter your Amount To Be Added">
+                <br>
+                <a><button type="submit" name="admin_submit" class="btn btn-primary">Submit</button></a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

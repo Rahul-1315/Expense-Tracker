@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/expense.css'%}">
+</head>
+
+
+
+<body>
+    <div class="table">
+        <label>Balance:{{balance}}</label>
+        <label>User-ID:{{user_object.user_id}}</label>
+        <label>Wallet-ID:{{wallet_object}}</label>
+
+        <table style="width:100%">
+            <br>
+
+            <tr>
+                <h2>Previous Transactions</h2>
+                <th>Amount</th>
+                <th>transaction_type</th>
+                <th>transaction_details</th>
+                <th>transaction_time</th>
+            </tr>
+            {% for i in transact_object %}
+            <tr>
+                <td>{{i.amount}}</td>
+                <td>{{i.transaction_type}}</td>
+                <td>{{i.transaction_details}}</td>
+                <td>{{i.transaction_time}}</td>
+                <br>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>What's Your Expense? 💰💳</h3>
+            <div class="form-ele">
+                <label>Amount Spent</label><br>
+                <input class="form-control" name='amount' placeholder="Enter amount spent" required>
+            </div>
+            <div class="form-ele-trans">
+                <label>Transaction Type:<br>DEBIT<input class="trans" type="radio" value="Debit" name="transaction_type"
+                        required>CREDIT<input type="radio" value="Credit" name="transaction_type">
+                </label>
+                <br>
+            </div>
+
+            <div class="form-ele">
+                <Label>Transaction Details</Label><br>
+                <textarea name="transaction_details" cols="30" rows="10" placeholder="Enter transaction details"
+                    required></textarea>
+            </div>
+            <div class="form-ele">
+                <label>Transaction Date</label><br>
+                <input type="datetime-local" name="transaction_time" required>
+            </div>
+            <div class="form-ele">
+                <a><button type="submit" name="admin_submit" class="btn btn-primary">Submit</button></a>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <a href="/"><button type="submit" name="admin_submit" class="btn btn-primary"
+                style="width: 110px;height: 40px; border-radius: 5px; margin: 0px 0px 0px 1050px; position: relative; bottom: 50px; background: transparent; border:springgreen 3px solid;color:white; font-size: 20px;cursor: pointer; font-weight: bolder;">Log-out</button></a>
+    </footer>
+</body>
+
+
+</html>

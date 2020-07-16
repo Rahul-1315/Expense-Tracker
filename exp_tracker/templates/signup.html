@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Welcome To Expense Tracker
+        </h1><img src="{% static 'images/icon.png' %}" alt="icon" width="100px" height="100px">
+
+    </div>
+    <div class="tag">
+        <small>-"It isn't what you earn but how spend it that fixes"</small>
+    </div>
+    <div class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>SIGN-IN</h3>
+            <div class="form-ele">
+                <label>User Name</label><br>
+                <input class="form-control" name='user_name' placeholder="Enter User Name" required>
+            </div>
+            <div class="form-ele">
+                <label>User ID</label><br>
+                <input class="form-control" name='user_id' placeholder="Enter User-ID" required>
+            </div>
+            <div class="form-ele">
+                <label>Password</label><br>
+                <input class="form-control" name='password' placeholder="Enter your Password" required>
+                <br>
+                <a><button type="submit" name="admin_submit" class="btn btn-primary">Submit</button></a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
